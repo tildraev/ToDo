@@ -18,7 +18,7 @@
 		D2FD855A27A343E300C505AE /* ToDoGroupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FD855927A343E300C505AE /* ToDoGroupController.swift */; };
 		D2FD855C27A3441100C505AE /* ToDoGroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FD855B27A3441100C505AE /* ToDoGroupTableViewController.swift */; };
 		D2FD855E27A3443300C505AE /* ToDoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FD855D27A3443300C505AE /* ToDoTableViewController.swift */; };
-		D2FD856027A3444E00C505AE /* ToDoGroupCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FD855F27A3444E00C505AE /* ToDoGroupCellTableViewCell.swift */; };
+		D2FD856027A3444E00C505AE /* ToDoGroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FD855F27A3444E00C505AE /* ToDoGroupTableViewCell.swift */; };
 		D2FD856227A3446300C505AE /* ToDoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FD856127A3446300C505AE /* ToDoTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -36,7 +36,7 @@
 		D2FD855927A343E300C505AE /* ToDoGroupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoGroupController.swift; sourceTree = "<group>"; };
 		D2FD855B27A3441100C505AE /* ToDoGroupTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoGroupTableViewController.swift; sourceTree = "<group>"; };
 		D2FD855D27A3443300C505AE /* ToDoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableViewController.swift; sourceTree = "<group>"; };
-		D2FD855F27A3444E00C505AE /* ToDoGroupCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoGroupCellTableViewCell.swift; sourceTree = "<group>"; };
+		D2FD855F27A3444E00C505AE /* ToDoGroupTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoGroupTableViewCell.swift; sourceTree = "<group>"; };
 		D2FD856127A3446300C505AE /* ToDoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -104,7 +104,7 @@
 			children = (
 				D2FD855B27A3441100C505AE /* ToDoGroupTableViewController.swift */,
 				D2FD855D27A3443300C505AE /* ToDoTableViewController.swift */,
-				D2FD855F27A3444E00C505AE /* ToDoGroupCellTableViewCell.swift */,
+				D2FD855F27A3444E00C505AE /* ToDoGroupTableViewCell.swift */,
 				D2FD856127A3446300C505AE /* ToDoTableViewCell.swift */,
 			);
 			path = "View Controllers";
@@ -208,7 +208,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2FD855427A3433200C505AE /* ToDo.swift in Sources */,
-				D2FD856027A3444E00C505AE /* ToDoGroupCellTableViewCell.swift in Sources */,
+				D2FD856027A3444E00C505AE /* ToDoGroupTableViewCell.swift in Sources */,
 				D2FD855627A3434600C505AE /* ToDoGroup.swift in Sources */,
 				D2FD853A27A33D4A00C505AE /* AppDelegate.swift in Sources */,
 				D2FD855A27A343E300C505AE /* ToDoGroupController.swift in Sources */,

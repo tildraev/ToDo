@@ -70,3 +70,9 @@ class ToDoTableViewController: UITableViewController {
         tableView.reloadData()
     }
 }
+
+extension ToDoTableViewController: ToDoTableViewCellDelegate {
+    func markToDoItemAsComplete(cell: ToDoTableViewCell) {
+        // mark a ToDo item as complete
+    }
+}

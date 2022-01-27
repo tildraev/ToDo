@@ -35,4 +35,12 @@ class ToDoGroupController {
         guard let index = group.toDoList.firstIndex(of: toDo) else { return }
         group.toDoList.remove(at: index)
     }
+    
+    func toggleToDoItemIsComplete(toDo: ToDo) {
+        toDo.isComplete.toggle()
+    }
+    
+    func toggleToDoGroupIsComplete(group: ToDoGroup) {
+        group.isComplete.toggle()
+    }
 }

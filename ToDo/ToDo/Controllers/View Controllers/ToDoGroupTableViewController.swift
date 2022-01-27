@@ -8,7 +8,7 @@
 import UIKit
 
 class ToDoGroupTableViewController: UITableViewController {
-
+    
     @IBOutlet weak var newToDoGroupTextField: UITextField!
     @IBOutlet weak var createNewToDoGroupButton: UIButton!
     
@@ -18,18 +18,17 @@ class ToDoGroupTableViewController: UITableViewController {
     }
     
     // MARK: - Table view data source
-
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return ToDoGroupController.sharedInstance.toDoGroupList.count
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "toDoGroupCell", for: indexPath) as? ToDoGroupCellTableViewCell else { return UITableViewCell() }
-
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "toDoGroup", for: indexPath) as? ToDoGroupTableViewCell else { return UITableViewCell() }
+        
         // Grab to do group we're working on
         let toDoGroup = ToDoGroupController.sharedInstance.toDoGroupList[indexPath.row]
-
+        
         // Configure the cell's button
         let isCompleteImageName = toDoGroup.isComplete ? "checkmark.diamond.fill" : "checkmark.diamond"
         let isCompleteImage = UIImage(systemName: isCompleteImageName)
@@ -40,7 +39,9 @@ class ToDoGroupTableViewController: UITableViewController {
         
         // Configure the cell's count label
         cell.toDoGroupCountLabel.text = "\(toDoGroup.toDoList.count)"
-
+        
+        cell.delegate = self
+        
         return cell
     }
     
@@ -52,9 +53,9 @@ class ToDoGroupTableViewController: UITableViewController {
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
-
+    
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
@@ -77,4 +78,14 @@ class ToDoGroupTableViewController: UITableViewController {
         tableView.reloadData()
     }
     
+}
+
+extension ToDoGroupTableViewController: ToDoGroupTableViewCellDelegate {
+    func markToDoItemGroupAsComplete(cell: ToDoGroupTableViewCell) {
+        //Mark to do item GROUP as complete
+        guard let index = tableView.indexPath(for: cell) else { return }
+        let group = ToDoGroupController.sharedInstance.toDoGroupList[index.row]
+        ToDoGroupController.sharedInstance.toggleToDoGroupIsComplete(group: group)
+        cell.updateCell(group: group)
+    }
 }

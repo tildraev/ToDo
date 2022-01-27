@@ -9,7 +9,7 @@ import Foundation
 
 class ToDo {
     let name: String
-    let isComplete: Bool
+    var isComplete: Bool
     
     init(name: String, isComplete: Bool = false) {
         self.name = name
