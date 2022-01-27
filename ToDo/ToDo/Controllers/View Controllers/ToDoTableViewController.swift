@@ -8,7 +8,7 @@
 import UIKit
 
 class ToDoTableViewController: UITableViewController {
-
+    
     
     // MARK: - IBOutlets
     
@@ -22,19 +22,19 @@ class ToDoTableViewController: UITableViewController {
         super.viewWillAppear(animated)
         tableView.reloadData()
     }
-
+    
     // MARK: - Table view data source
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let numOfRows = toDoGroup?.toDoList.count {
             return numOfRows
         }
         return 0
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "toDoCell", for: indexPath) as? ToDoTableViewCell else { return UITableViewCell() }
-
+        
         // Configure the cell...
         if let toDoItem = toDoGroup?.toDoList[indexPath.row] {
             cell.toDoItemNameLabel.text = toDoItem.name
@@ -44,9 +44,11 @@ class ToDoTableViewController: UITableViewController {
             cell.toDoItemIsCompleteButton.setImage(isCompletedButtonImage, for: .normal)
         }
         
+        cell.delegate = self
+        
         return cell
     }
-
+    
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
@@ -73,6 +75,13 @@ class ToDoTableViewController: UITableViewController {
 
 extension ToDoTableViewController: ToDoTableViewCellDelegate {
     func markToDoItemAsComplete(cell: ToDoTableViewCell) {
-        // mark a ToDo item as complete
+        guard let index = tableView.indexPath(for: cell),
+              let toDoGroup = toDoGroup else { return }
+        
+        let toDo = toDoGroup.toDoList[index.row]
+        
+        ToDoGroupController.sharedInstance.toggleToDoItemIsComplete(toDo: toDo)
+        
+        cell.update(toDo: toDo)
     }
 }
