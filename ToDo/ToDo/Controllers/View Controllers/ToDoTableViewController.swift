@@ -61,10 +61,6 @@ class ToDoTableViewController: UITableViewController {
         }
     }
     
-    @IBAction func toDoIsCompletedButtonTapped(_ sender: Any) {
-        print("To do item is completed")
-    }
-    
     @IBAction func addToDoButtonTapped(_ sender: Any) {
         guard let toDoGroup = toDoGroup,
               let newToDoName = newToDoItemNameLabel.text, !newToDoName.isEmpty else { return }
@@ -74,6 +70,10 @@ class ToDoTableViewController: UITableViewController {
 }
 
 extension ToDoTableViewController: ToDoTableViewCellDelegate {
+    func deleteToDoGroupIfAllItemsComplete(cell: ToDoTableViewCell) {
+        guard let index = tableView.indexPath(for: cell) else { return }
+    }
+    
     func markToDoItemAsComplete(cell: ToDoTableViewCell) {
         guard let index = tableView.indexPath(for: cell),
               let toDoGroup = toDoGroup else { return }

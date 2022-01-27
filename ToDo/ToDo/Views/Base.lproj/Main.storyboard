@@ -171,7 +171,6 @@
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" image="checkmark.square" catalog="system" title=""/>
                                                     <connections>
-                                                        <action selector="toDoIsCompletedButtonTapped:" destination="9JY-kM-eRg" eventType="touchUpInside" id="y7h-LI-3L9"/>
                                                         <action selector="toDoItemIsCompleteButtonTapped:" destination="Mye-R7-Rel" eventType="touchUpInside" id="eK1-wk-1dN"/>
                                                     </connections>
                                                 </button>

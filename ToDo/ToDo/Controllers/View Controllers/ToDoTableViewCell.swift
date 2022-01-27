@@ -9,6 +9,8 @@ import UIKit
 
 protocol ToDoTableViewCellDelegate: AnyObject {
     func markToDoItemAsComplete(cell: ToDoTableViewCell)
+    
+    func deleteToDoGroupIfAllItemsComplete(cell: ToDoTableViewCell)
 }
 
 class ToDoTableViewCell: UITableViewCell {
