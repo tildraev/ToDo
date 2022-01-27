@@ -9,21 +9,41 @@ import UIKit
 
 class ToDoTableViewController: UITableViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    
+    // MARK: - IBOutlets
+    
+    
+    @IBOutlet weak var newToDoItemNameLabel: UITextField!
+    @IBOutlet weak var addToDoButton: UIButton!
+    
+    var toDoGroup: ToDoGroup? = nil
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
     }
 
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return ToDoController.sharedInstance.toDoList.count
+        if let numOfRows = toDoGroup?.toDoList.count {
+            return numOfRows
+        }
+        return 0
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "toDoCell", for: indexPath) as? ToDoTableViewCell else { return UITableViewCell() }
 
         // Configure the cell...
-
+        if let toDoItem = toDoGroup?.toDoList[indexPath.row] {
+            cell.toDoItemNameLabel.text = toDoItem.name
+            
+            let isCompletedButtonImageString = toDoItem.isComplete ? "checkmark.square.fill" : "checkmark.square"
+            let isCompletedButtonImage = UIImage(systemName: isCompletedButtonImageString)
+            cell.toDoItemIsCompleteButton.setImage(isCompletedButtonImage, for: .normal)
+        }
+        
         return cell
     }
 
@@ -31,7 +51,22 @@ class ToDoTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
+            if let toDoGroup = toDoGroup {
+                let toDoItem = toDoGroup.toDoList[indexPath.row]
+                ToDoGroupController.sharedInstance.deleteToDoItem(group: toDoGroup, toDo: toDoItem)
+            }
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
+    }
+    
+    @IBAction func toDoIsCompletedButtonTapped(_ sender: Any) {
+        print("To do item is completed")
+    }
+    
+    @IBAction func addToDoButtonTapped(_ sender: Any) {
+        guard let toDoGroup = toDoGroup,
+              let newToDoName = newToDoItemNameLabel.text, !newToDoName.isEmpty else { return }
+        ToDoGroupController.sharedInstance.createToDoItem(group: toDoGroup, name: newToDoName)
+        tableView.reloadData()
     }
 }

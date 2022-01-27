@@ -91,7 +91,7 @@
                                     <outlet property="toDoGroupCountLabel" destination="Lua-e4-Ndv" id="xdL-J9-X57"/>
                                     <outlet property="toDoGroupIsCompletedButton" destination="aRa-Hk-5Na" id="S1n-JM-2of"/>
                                     <outlet property="toDoGroupLabel" destination="lv5-o2-8Se" id="Vnh-Cd-Iq7"/>
-                                    <segue destination="9JY-kM-eRg" kind="show" id="B4T-yY-LLh"/>
+                                    <segue destination="9JY-kM-eRg" kind="show" identifier="toToDoGroup" id="B4T-yY-LLh"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -134,6 +134,9 @@
                                             <rect key="frame" x="324" y="0.0" width="50" height="40"/>
                                             <state key="normal" title="Button"/>
                                             <buttonConfiguration key="configuration" style="filled" title="Add"/>
+                                            <connections>
+                                                <action selector="addToDoButtonTapped:" destination="9JY-kM-eRg" eventType="touchUpInside" id="Oyz-AY-ubx"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                 </stackView>
@@ -167,6 +170,10 @@
                                                     <rect key="frame" x="330.5" y="0.0" width="43.5" height="45"/>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" image="checkmark.square" catalog="system" title=""/>
+                                                    <connections>
+                                                        <action selector="toDoIsCompletedButtonTapped:" destination="9JY-kM-eRg" eventType="touchUpInside" id="y7h-LI-3L9"/>
+                                                        <action selector="toDoItemIsCompleteButtonTapped:" destination="Mye-R7-Rel" eventType="touchUpInside" id="eK1-wk-1dN"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </stackView>
@@ -178,6 +185,10 @@
                                         <constraint firstItem="bsy-KU-kVa" firstAttribute="top" secondItem="tUc-L0-my5" secondAttribute="top" id="nIo-OR-gJ9"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="toDoItemIsCompleteButton" destination="0Ze-cX-dgN" id="0g0-17-XOO"/>
+                                    <outlet property="toDoItemNameLabel" destination="cXW-CN-p3c" id="Kly-Ri-FrC"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -186,6 +197,10 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="3sh-Uy-ED9"/>
+                    <connections>
+                        <outlet property="addToDoButton" destination="YPe-at-xjX" id="ryR-V5-YOS"/>
+                        <outlet property="newToDoItemNameLabel" destination="3A6-Of-lQf" id="6ks-1z-kRB"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="39u-Ch-QjC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -12,10 +12,11 @@ class ToDoGroupTableViewController: UITableViewController {
     @IBOutlet weak var newToDoGroupTextField: UITextField!
     @IBOutlet weak var createNewToDoGroupButton: UIButton!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
     }
-
+    
     // MARK: - Table view data source
 
 
@@ -58,6 +59,14 @@ class ToDoGroupTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "toToDoGroup" {
+            if let index = tableView.indexPathForSelectedRow {
+                if let destination = segue.destination as? ToDoTableViewController {
+                    let toDoGroup = ToDoGroupController.sharedInstance.toDoGroupList[index.row]
+                    destination.toDoGroup = toDoGroup
+                }
+            }
+        }
     }
     
     

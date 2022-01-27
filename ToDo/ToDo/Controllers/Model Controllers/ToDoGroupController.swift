@@ -25,4 +25,14 @@ class ToDoGroupController {
         guard let index = toDoGroupList.firstIndex(where: {$0 == toDoGroup}) else { return }
         toDoGroupList.remove(at: index)
     }
+    
+    func createToDoItem(group: ToDoGroup, name: String) {
+        let newToDoItem = ToDo(name: name)
+        group.toDoList.append(newToDoItem)
+    }
+    
+    func deleteToDoItem(group: ToDoGroup, toDo: ToDo) {
+        guard let index = group.toDoList.firstIndex(of: toDo) else { return }
+        group.toDoList.remove(at: index)
+    }
 }
