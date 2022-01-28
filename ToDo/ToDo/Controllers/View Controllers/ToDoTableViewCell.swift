@@ -22,6 +22,7 @@ class ToDoTableViewCell: UITableViewCell {
     
     @IBAction func toDoItemIsCompleteButtonTapped(_ sender: Any) {
         delegate?.markToDoItemAsComplete(cell: self)
+        delegate?.deleteToDoGroupIfAllItemsComplete(cell: self)
     }
     
     func update(toDo: ToDo) {

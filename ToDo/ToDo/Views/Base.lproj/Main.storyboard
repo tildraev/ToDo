@@ -23,12 +23,15 @@
                                     <rect key="frame" x="10" y="0.0" width="394" height="40"/>
                                     <subviews>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New ToDo..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hmt-XG-a8v">
-                                            <rect key="frame" x="0.0" y="0.0" width="317" height="40"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="309" height="40"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
-                                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2d0-lo-qEC">
-                                            <rect key="frame" x="327" y="0.0" width="67" height="40"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2d0-lo-qEC">
+                                            <rect key="frame" x="319" y="0.0" width="75" height="40"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="75" id="u6T-PR-Ap3"/>
+                                            </constraints>
                                             <state key="normal" title="Button"/>
                                             <buttonConfiguration key="configuration" style="filled" title="Create"/>
                                             <connections>
@@ -47,32 +50,36 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="toDoGroup" rowHeight="45" id="sGM-86-mfu" customClass="ToDoGroupTableViewCell" customModule="ToDo" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="84.5" width="414" height="45"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="toDoGroup" rowHeight="58" id="sGM-86-mfu" customClass="ToDoGroupTableViewCell" customModule="ToDo" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="84.5" width="414" height="58"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sGM-86-mfu" id="zCs-qg-7Tj">
-                                    <rect key="frame" x="0.0" y="0.0" width="384.5" height="45"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="384.5" height="58"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="rj3-11-W8s">
-                                            <rect key="frame" x="0.0" y="0.0" width="384.5" height="45"/>
+                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="rj3-11-W8s">
+                                            <rect key="frame" x="5" y="0.0" width="371.5" height="58"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aRa-Hk-5Na">
-                                                    <rect key="frame" x="0.0" y="0.0" width="46.5" height="45"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aRa-Hk-5Na">
+                                                    <rect key="frame" x="0.0" y="0.0" width="58" height="58"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="aRa-Hk-5Na" secondAttribute="height" multiplier="1:1" id="AeZ-lL-OXQ"/>
+                                                        <constraint firstAttribute="height" constant="50" id="Pbn-iD-zqp"/>
+                                                    </constraints>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" image="checkmark.diamond" catalog="system"/>
                                                     <connections>
                                                         <action selector="toDoGroupIsCompletedButtonTapped:" destination="sGM-86-mfu" eventType="touchUpInside" id="2Pl-mO-Arz"/>
                                                     </connections>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1" verticalHuggingPriority="251" text="(thing to do)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lv5-o2-8Se">
-                                                    <rect key="frame" x="66.5" y="0.0" width="275.5" height="45"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="(thing to do)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lv5-o2-8Se">
+                                                    <rect key="frame" x="68" y="0.0" width="271" height="58"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" text="(#)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lua-e4-Ndv">
-                                                    <rect key="frame" x="362" y="0.0" width="22.5" height="45"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" text="(#)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lua-e4-Ndv">
+                                                    <rect key="frame" x="349" y="0.0" width="22.5" height="58"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -81,10 +88,10 @@
                                         </stackView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="rj3-11-W8s" secondAttribute="trailing" id="7RO-dn-TBT"/>
-                                        <constraint firstItem="rj3-11-W8s" firstAttribute="top" secondItem="zCs-qg-7Tj" secondAttribute="top" id="FlY-s5-Pia"/>
-                                        <constraint firstAttribute="bottom" secondItem="rj3-11-W8s" secondAttribute="bottom" id="gLO-Wj-Hlu"/>
-                                        <constraint firstItem="rj3-11-W8s" firstAttribute="leading" secondItem="zCs-qg-7Tj" secondAttribute="leading" id="vIH-LN-VDt"/>
+                                        <constraint firstItem="rj3-11-W8s" firstAttribute="top" secondItem="zCs-qg-7Tj" secondAttribute="top" id="KQm-tI-sOs"/>
+                                        <constraint firstAttribute="bottom" secondItem="rj3-11-W8s" secondAttribute="bottom" id="Zff-st-dzn"/>
+                                        <constraint firstItem="rj3-11-W8s" firstAttribute="leading" secondItem="zCs-qg-7Tj" secondAttribute="leading" constant="5" id="p7d-Iy-PGS"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="rj3-11-W8s" secondAttribute="trailing" id="xus-3v-S7f"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -126,12 +133,15 @@
                                     <rect key="frame" x="20" y="0.0" width="374" height="40"/>
                                     <subviews>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New ToDo..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3A6-Of-lQf">
-                                            <rect key="frame" x="0.0" y="0.0" width="309" height="40"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="299" height="40"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                         <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="500" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YPe-at-xjX">
-                                            <rect key="frame" x="324" y="0.0" width="50" height="40"/>
+                                            <rect key="frame" x="314" y="0.0" width="60" height="40"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="60" id="3Ex-fj-G3i"/>
+                                            </constraints>
                                             <state key="normal" title="Button"/>
                                             <buttonConfiguration key="configuration" style="filled" title="Add"/>
                                             <connections>

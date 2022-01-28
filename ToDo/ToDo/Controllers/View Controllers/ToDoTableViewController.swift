@@ -67,11 +67,39 @@ class ToDoTableViewController: UITableViewController {
         ToDoGroupController.sharedInstance.createToDoItem(group: toDoGroup, name: newToDoName)
         tableView.reloadData()
     }
+    
+    func presentAllDoneAlertController() {
+        let alertController = UIAlertController(title: "All Done!", message: "Want us to delete this list?", preferredStyle: .alert)
+        
+        let noAction = UIAlertAction(title: "No", style: .default)
+        let yesAction = UIAlertAction(title: "Yes", style: .default) { _ in
+            guard let toDoGroup = self.toDoGroup else { return }
+            ToDoGroupController.sharedInstance.deleteToDoGroup(toDoGroup: toDoGroup)
+            self.navigationController?.popViewController(animated: true)
+        }
+        
+        alertController.addAction(noAction)
+        alertController.addAction(yesAction)
+        
+        present(alertController, animated: true, completion: nil)
+    }
 }
 
 extension ToDoTableViewController: ToDoTableViewCellDelegate {
     func deleteToDoGroupIfAllItemsComplete(cell: ToDoTableViewCell) {
-        guard let index = tableView.indexPath(for: cell) else { return }
+        guard let toDoGroup = toDoGroup else { return }
+        
+        var incompleteItemCount = 0
+        
+        toDoGroup.toDoList.forEach { toDoItem in
+            if !toDoItem.isComplete {
+                incompleteItemCount += 1
+            }
+        }
+        
+        if incompleteItemCount == 0 {
+            presentAllDoneAlertController()
+        }
     }
     
     func markToDoItemAsComplete(cell: ToDoTableViewCell) {

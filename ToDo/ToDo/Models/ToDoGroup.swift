@@ -26,3 +26,4 @@ extension ToDoGroup: Equatable {
         lhs.name == rhs.name
     }
 }
+
